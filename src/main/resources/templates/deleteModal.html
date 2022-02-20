@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete</title>
+</head>
+<body>
+
+<div class="modal-header">
+    <h5 class="modal-title" id="ModalDeleteLabel">Delete user</h5>
+    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body mx-auto text-center" style="background: white; width : 40%">
+    <!--                <a href="/delete?id=2"></a>-->
+
+    <form th:action="@{/delete(id=${user.id})}"
+        th:object="${user}" method="POST" id="submitForm">
+    <fieldset disabled>
+    <div class="form-group row text-center">
+        <label for="staticID" style="font-weight:bold" >ID</label>
+        <input type="text" readonly class="form-control" id="staticID" th:field="*{id}"/>
+    </div>
+    <div class="form-group row text-center">
+        <label for="inputUsername" style="font-weight:bold" >Username</label>
+        <input type="text" class="form-control" id="inputUsername" th:field="*{username}" placeholder="Enter username"/>
+    </div>
+    <div class="form-group row text-center">
+        <label for="inputPassword" style="font-weight:bold" >Password</label>
+        <input type="text" class="form-control" id="inputPassword" th:field="*{password}" placeholder="Enter password"/>
+    </div>
+    <div class="form-group row text-center">
+        <label for="inputName" style="font-weight:bold" >Name</label>
+        <input type="text" class="form-control" id="inputName" th:field="*{name}" placeholder="Enter name"/>
+    </div>
+    <div class="form-group row text-center">
+        <label for="inputLastName" style="font-weight:bold" >Lastname</label>
+        <input type="text" class="form-control" id="inputLastName" th:field="*{lastName}" placeholder="Enter Lastname"/>
+    </div>
+    <div class="form-group row text-center">
+        <label for="inputAge" style="font-weight:bold" >Age</label>
+        <input type="text" class="form-control" id="inputAge" th:field="*{age}" placeholder="Enter Age"/>
+    </div>
+    <div class="form-group row text-center">
+        <label for="selectRole" style="font-weight:bold" >Role</label>
+        <select multiple class="form-control" size="2" id="selectRole" th:field="*{roles}">
+            <option th:each="role: ${listRoles}" th:text="${role.name}" th:value="${role.id}">
+            </option>
+        </select>
+    </div>
+    </fieldset>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="submit" form="submitForm" class="btn btn-danger">Delete</button>
+</div>
+
+</body>
+</html>
