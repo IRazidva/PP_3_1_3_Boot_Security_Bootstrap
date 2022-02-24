@@ -44,7 +44,7 @@
     <div class="form-group row text-center">
         <label for="selectRole" style="font-weight:bold" >Role</label>
         <select multiple class="form-control" size="2" id="selectRole" th:field="*{roles}">
-            <option th:each="role: ${listRoles}" th:text="${role.name}" th:value="${role.id}">
+            <option th:each="role: ${listRoles}" th:text="${role}" th:value="${role}">
             </option>
         </select>
     </div>
